@@ -1,11 +1,6 @@
 package controllers
 
-import play.api.Play.current
 import play.api.mvc.{Controller, Action}
-import play.api.libs.json.Json
-
-import library.Random
-import library.Util
 import models.Member
 import models.Post
 import models.CustomData
@@ -14,26 +9,27 @@ import views.html
 object IndexController extends Controller {
   def index = Action {
     implicit request => {
-      current.configuration.getString("service.domain") match {
-        case Some(x) if request.domain.startsWith(x) =>
-          Ok(html.index(request.session.get("uname")))
-        case _ => {
-          val memberId = Member.selectByUname(Util.getUnameFromSubdomain(request.domain)).get.id
-          val css = CustomData.loadCss(memberId, "list")
-          val js = CustomData.loadJs(memberId, "list")
-          Ok(html.myindex(
-            request.session.get("uname"),
-            css,
-            js,
-            Util.getUnameFromSubdomain(request.domain),
-            Post.postsByMemberId(memberId, Some(0)),
-            1,
-            Map(
-              "prev" -> false,
-              "next" -> Post.hasNextPage(memberId, 1)))
-          )
-        }
-      }
+      Ok(html.index(request.session.get("uname")))
+    }
+  }
+
+  def user(uname: String) = Action {
+    implicit request => {
+      val memberId = Member.selectByUname(uname).get.id
+      val css = CustomData.loadCss(memberId, "list")
+      val js = CustomData.loadJs(memberId, "list")
+      println("Yo")
+      Ok(html.myindex(
+        request.session.get("uname"),
+        css,
+        js,
+        uname,
+        Post.postsByMemberId(memberId, Some(0)),
+        1,
+        Map(
+          "prev" -> false,
+          "next" -> Post.hasNextPage(memberId, 1)))
+      )
     }
   }
 
@@ -48,7 +44,8 @@ object IndexController extends Controller {
   }
 
   def test = Action {
-    // Ok("Hello")
-    Ok(html.test())
+    // val appConf = Configuration.load()
+    Ok("Hello")
+    // Ok(html.test())
   }
 }
