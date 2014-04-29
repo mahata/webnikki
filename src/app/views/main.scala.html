@@ -38,7 +38,8 @@
       @{
         pageUserName match {
           case Some(x) => {
-            val linkUrl = "http://" + x + current.configuration.getString("session.domain").get
+            // val linkUrl = "http://" + x + current.configuration.getString("session.domain").get
+            val linkUrl = current.configuration.getString("service.url").get + x
             Html(s"""<h2><a href="$linkUrl">$x</a> さんの日記</h2>""")
           }
           case _ => {
