@@ -14,7 +14,7 @@ class ApplicationSpec extends Specification {
   "Application" should {
     "send 404 on a bad request" in {
       running(FakeApplication()) {
-        val failureAccess = route(FakeRequest(GET, "/boum")).get
+        val failureAccess = route(FakeRequest(GET, "/dummy/not-exist")).get
         status(failureAccess) must equalTo(NOT_FOUND)
       }
     }
