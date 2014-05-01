@@ -12,6 +12,8 @@ nikki (日記) is a word which means diary. webnikki is a service to publish you
 * Ansible 1.5.4 (or above)
 * Play Framework 2.1.5
 
+Following are assuming that you're using either Mac (OSX) or Linux.
+
 ## How to setup
 
 ```
@@ -24,7 +26,13 @@ nikki (日記) is a word which means diary. webnikki is a service to publish you
 (vm) play "run -Dconfig.file=conf/dev.conf"
 ```
 
-You'll be access to http://localhost:9000/ now!
+Add following line to `/etc/hosts`
+
+```
+127.0.0.1	local.webnikki.com
+```
+
+You'll be access to http://local.webnikki.com:9000/ now!
 
 ## How to run tests
 
