@@ -120,11 +120,6 @@ object PostController extends Controller {
     }
   }
 
-  private def createEntryUrl(uname: String, createdAt: Long) = {
-    "http://%s.%s%s/entry/%s" format
-        (uname,
-         current.configuration.getString("service.domain").getOrElse(""),
-         current.configuration.getString("service.port").map { x => ":%s" format x }.getOrElse(""),
-         createdAt.toString)
-  }
+  private def createEntryUrl(uname: String, createdAt: Long) =
+    current.configuration.getString("service.url") + uname + "/" + createdAt.toString
 }

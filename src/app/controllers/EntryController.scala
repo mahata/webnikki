@@ -24,9 +24,24 @@ object EntryController extends Controller {
           "content" -> text
           ))
 
-  def index(createdAt: String) = Action {
+//  def index(createdAt: String) = Action {
+//    implicit request => {
+//      val memberId = Member.selectByUname(Util.getUnameFromSubdomain(request.domain)).get.id
+//      Post.postByMemberIdAndCreatedAt(memberId, createdAt.toLong) match {
+//        case Some(entry) => {
+//          val css = CustomData.loadCss(memberId, "page")
+//          val js = CustomData.loadJs(memberId, "page")
+//          val uname = Util.getUnameFromSubdomain(request.domain)
+//          Ok(html.entry(request.session.get("uname"), css, js, uname, entry, Comment.commentsByPostId(entry.id)))
+//        }
+//        case None => BadRequest("その記事存在しないです...")
+//      }
+//    }
+//  }
+
+  def index(createdAt: String, uname: String) = Action {
     implicit request => {
-      val memberId = Member.selectByUname(Util.getUnameFromSubdomain(request.domain)).get.id
+      val memberId = Member.selectByUname(uname).get.id
       Post.postByMemberIdAndCreatedAt(memberId, createdAt.toLong) match {
         case Some(entry) => {
           val css = CustomData.loadCss(memberId, "page")

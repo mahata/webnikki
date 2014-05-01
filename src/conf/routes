@@ -17,7 +17,8 @@ GET     /post/:createdAt                    controllers.PostController.indexEdit
 POST    /post                               controllers.PostController.indexPost
 POST    /post/delete                        controllers.PostController.deletePost
 POST    /image-post                         controllers.PostController.imagePost
-GET     /entry/:createdAt                   controllers.EntryController.index(createdAt)
+# GET     /entry/:createdAt                   controllers.EntryController.index(createdAt)
+GET     /:uname/entry/:createdAt            controllers.EntryController.index(createdAt, uname)
 POST    /entry                              controllers.EntryController.indexPost
 GET     /api/exist/:category/$name<[^\s]*>  controllers.ApiController.exist(category, name)
 GET     /api/css/:purpose/$name<[^\s]*>     controllers.ApiController.css(purpose, name)
