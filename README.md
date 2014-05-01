@@ -50,7 +50,7 @@ You can change Scala code under `PATH/TO/webnikki/src` directly since it's NFS m
 
 ### How to hack with IntelliJ
 
-Provided you have Play Framework 2.1.5 in your `$PATH` and yoru IntelliJ has Scala plugin, run following commands:
+Provided you have Play Framework 2.1.5 in your `$PATH` and your IntelliJ has Scala plugin, run following commands:
 
 ```
 (local) cd /PATH/TO/webnikki/src
