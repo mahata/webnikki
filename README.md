@@ -4,7 +4,7 @@
 
 ## What's webnikki
 
-nikki (日記) is a word which means diary. webnikki is a service to publish your nikki on web :)
+nikki (日記) is a word which means diary in Japanese. webnikki is a service to publish your nikki on web :)
 
 ## Requirements
 
