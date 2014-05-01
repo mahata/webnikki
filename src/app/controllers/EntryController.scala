@@ -46,8 +46,7 @@ object EntryController extends Controller {
         case Some(entry) => {
           val css = CustomData.loadCss(memberId, "page")
           val js = CustomData.loadJs(memberId, "page")
-          val uname = Util.getUnameFromSubdomain(request.domain)
-          Ok(html.entry(request.session.get("uname"), css, js, uname, entry, Comment.commentsByPostId(entry.id)))
+          Ok(html.entry(Option(uname), css, js, uname, entry, Comment.commentsByPostId(entry.id)))
         }
         case None => BadRequest("その記事存在しないです...")
       }
