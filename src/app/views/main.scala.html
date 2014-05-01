@@ -19,7 +19,7 @@
           @{
             loginName match {
               case Some(x) => {
-                val userUrl = "http://" + x + current.configuration.getString("session.domain").get
+                val userUrl = current.configuration.getString("service.url").get + x
                 val postUrl = current.configuration.getString("service.url").get + "post"
                 val manageUrl = current.configuration.getString("service.url").get + "manage"
                 val logoutUrl = current.configuration.getString("service.url").get + "logout"
