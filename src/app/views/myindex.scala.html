@@ -8,7 +8,9 @@
 @main(s"$uname のトップページ - web日記", loginName, Option(uname)) {
 
 @for(post <- posts) {
-  <h2 id="post-title"><a href="http://@{uname}.@{current.configuration.getString("service.domain")}/entry/@post.created_at">@if(post.title.isEmpty) {(タイトル未設定)} else {@post.title}</a></h2>
+  <h2 id="post-title">
+      <a href="@{current.configuration.getString("service.url")}@{uname}/entry/@post.created_at">@if(post.title.isEmpty) {(タイトル未設定)} else {@post.title}</a>
+  </h2>
   <div id="post-content">@(toXHTML(knockoff(post.content)))</div>
   <div id="post-date">投稿日: <span>@{"%tY/%<tm/%<td %<tH:%<tM:%<tS" format new Date(post.published_at)}</span></div>
   <hr class="entry-separator" />
