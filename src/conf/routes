@@ -2,6 +2,9 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+# favicon.ico needs a special direction since some browsers refer to /favicon.ico regardless of the config
+GET     /favicon.ico                        controllers.Assets.at(path="/public", file="/images/favicon.ico")
+
 GET     /robots.txt                         controllers.IndexController.robots
 GET     /                                   controllers.IndexController.index
 GET     /page/:pageNum                      controllers.PageController.index(pageNum)
@@ -32,8 +35,6 @@ GET     /rss                                controllers.RssController.rss
 
 GET     /:uname                             controllers.IndexController.user(uname)
 GET     /:uname/                            controllers.IndexController.user(uname)
-
-GET     /test                               controllers.IndexController.test
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /*file                              controllers.Assets.at(path="/public", file)
