@@ -40,6 +40,9 @@ object Util {
   def urlifyFilePath(originalPath: String) =
     originalPath.substring(Play.application.path.toString.length, originalPath.length).replace("/public/", "/")
 
+  def base64encode(str: String) =
+    new sun.misc.BASE64Encoder().encode(str.getBytes).toString
+
   def base64decode(encodedStr: String): String =
     new sun.misc.BASE64Decoder().decodeBuffer(encodedStr).map(b => b.toChar).mkString
 
