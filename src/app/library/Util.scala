@@ -41,7 +41,7 @@ object Util {
     originalPath.substring(Play.application.path.toString.length, originalPath.length).replace("/public/", "/")
 
   def base64encode(str: String) =
-    new sun.misc.BASE64Encoder().encode(str.getBytes).toString
+    new sun.misc.BASE64Encoder().encode(str.getBytes("UTF-8")).toString
 
   def base64decode(encodedStr: String): String =
     new sun.misc.BASE64Decoder().decodeBuffer(encodedStr).map(b => b.toChar).mkString
