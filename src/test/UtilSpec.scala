@@ -14,4 +14,10 @@ class UtilSpec extends Specification {
       Util.getUnameFromPath("") must equalTo("")
     }
   }
+
+  "Util.base64decode" should {
+    "base64decode \"c2VjcmV0UGEkJHdvcmQ=\" to \"secretPa$$word\"" in {
+      Util.base64decode("c2VjcmV0UGEkJHdvcmQ=") must equalTo("secretPa$$word")
+    }
+  }
 }
