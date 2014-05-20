@@ -42,4 +42,9 @@ object Util {
 
   def base64decode(encodedStr: String): String =
     new sun.misc.BASE64Decoder().decodeBuffer(encodedStr).map(b => b.toChar).mkString
+
+  def sha1(input: String): String = {
+    val md = java.security.MessageDigest.getInstance("SHA-1")
+    md.digest(input.getBytes("UTF-8")).map("%02x".format(_)).mkString
+  }
 }
