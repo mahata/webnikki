@@ -15,6 +15,12 @@ class UtilSpec extends Specification {
     }
   }
 
+  "Util.base64encode" should {
+    "convert \"secretPa$$word\" to \"c2VjcmV0UGEkJHdvcmQ=\"" in {
+      Util.base64encode("secretPa$$word") must equalTo("c2VjcmV0UGEkJHdvcmQ=")
+    }
+  }
+
   "Util.base64decode" should {
     "convert \"c2VjcmV0UGEkJHdvcmQ=\" to \"secretPa$$word\"" in {
       Util.base64decode("c2VjcmV0UGEkJHdvcmQ=") must equalTo("secretPa$$word")
